@@ -14,10 +14,10 @@ with  events as (
     select * from {{ref('stage_events')}}
 ),
  grp as (
-    select * from {{ref('stage_groups')}}
+    select * from {{ref('dim_groups')}}
 ),
  venues as (
-    select * from {{ref('stage_venues')}}
+    select * from {{ref('dim_venue')}}
 ),
 rsvp as (
     select * from {{ref('dim_rsvp')}}
