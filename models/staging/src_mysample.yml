@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: meetup
+    database: autonomous-tube-363006
+    schema: mysample
+    tables:
+      - name: venues
+      - name: groups
+      - name: users
+      - name: events

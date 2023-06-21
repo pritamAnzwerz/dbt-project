@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stage_users
+    description: stage user data from meetup
+    columns: 
+      - name: user_id
+        description: The primary key for users
+        tests:
+        - unique
+        - not_null
+        
+            
