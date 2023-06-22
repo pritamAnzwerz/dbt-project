@@ -1,5 +1,5 @@
 
-/*Fact Table: Event Fact
+/*Dim_Events:
 
 event_id (Primary Key): Unique identifier for each event.
 group_id (Foreign Key): Reference to the Group dimension table.
@@ -14,34 +14,38 @@ with  events as (
     select * from {{ref('stage_events')}}
 ),
  grp as (
-    select * from {{ref('dim_groups')}}
+    select * from {{ref('stage_groups')}}
 ),
  venues as (
-    select * from {{ref('dim_venue')}}
+    select * from {{ref('stage_venues')}}
 ),
-rsvp as (
-    select * from {{ref('dim_rsvp')}}
 
-),
+
+
 
 final as (
     select row_number() over () as event_id,
+    e.name,
+    e.description,
     g.group_id,  
-    v.venue_id,
-    r.rsvp_id,
+    v.venue_id,   
     TIMESTAMP_MILLIS(e.created) as created,
     TIMESTAMP_MILLIS(e.time) as time,
     e.duration,
     e.rsvp_limit,
     e.status 
-    
+
     from events e
+    
     join grp g
+
     on e.group_id=g.group_id
+    
     join venues v 
+
     on e.venue_id=v.venue_id
-    join rsvp r
-    on e.user_id=r.user_id
+   
+    
 
 )
-select * from final
+select *   from final
