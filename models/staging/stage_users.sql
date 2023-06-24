@@ -4,7 +4,7 @@ with source as (
 
  stage_users as 
 (
-    select 
+select 
 user_id,
 city,
 country,

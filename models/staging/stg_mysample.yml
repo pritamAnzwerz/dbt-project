@@ -6,8 +6,53 @@ models:
     columns: 
       - name: user_id
         description: The primary key for users
+        tests:           
+           - not_null
+      - name: group_id
         tests:
-        - unique
-        - not_null
+          - relationships:
+              to: ref('stage_groups')
+              field: group_id
         
-            
+  - name: stage_events
+    description: stage event data from meetup
+    columns: 
+      - name: user_id
+        description: The primary key for users
+        tests:           
+           - not_null
+                      
+           - relationships:
+              to: ref('stage_users')
+              field: user_id
+      - name: venue_id
+        tests:
+          - relationships:
+              to: ref('stage_venues')
+              field: venue_id 
+      - name: group_id
+        tests:
+          - relationships:
+              to: ref('stage_groups')
+              field: group_id
+      
+  - name: stage_groups
+    description: stage group data from meetup
+    columns: 
+      - name: group_id
+        description: The primary key for users
+        tests:           
+           - not_null
+           - unique
+       
+                     
+  - name: stage_venues
+    description: stage venue data from meetup
+    columns: 
+      - name: venue_id
+        description: The primary key for users
+        tests:           
+           - not_null
+           - unique
+           
+       
