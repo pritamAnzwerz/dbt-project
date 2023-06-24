@@ -4,6 +4,12 @@ user_id (Foreign Key referencing DimUser)
 when
 response
 guests
+
+The central fact table is FACT_RSVP, which contains the RSVP information such as event attendance, response, and number of guests.
+The dimension tables are DIM_USERS, DIM_GROUPS,DIM_MEMBERSHIP, DIM_EVENTS, and DIM_VENUES, 
+which store the descriptive attributes related to users, groups, topics, events, and venues, respectively.
+The relationship between dimensions and the fact table is established through foreign keys 
+(e.g., user_id, group_id, event_id, venue_id).
 */
 
 
