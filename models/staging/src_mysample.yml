@@ -2,10 +2,37 @@ version: 2
 
 sources:
   - name: meetup
+    description: This is a replica of the Bigquery database used by the datawarehouse
     database: autonomous-tube-363006
     schema: mysample
     tables:
       - name: venues
+        description: One record per order 
+        columns:
+          - name: venue_id
+            description: Primary key of the venues table
+            tests:
+              - unique
+              - not_null
+          
       - name: groups
+        description: One record per order 
+        columns:
+          - name: group_id
+            description: Primary key of the groups table
+            tests:
+              - unique
+              - not_null
       - name: users
+        description: One record per order 
+        columns:
+          - name: user_id
+            description: Primary key of the groups table
+            tests:
+              - unique
+              - not_null
       - name: events
+        description: One record per order 
+        
+
+      
